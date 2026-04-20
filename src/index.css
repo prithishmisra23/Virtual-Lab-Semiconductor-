@@ -13,8 +13,8 @@
 
 body {
   font-family: var(--font-sans);
-  background: linear-gradient(135deg, var(--color-surface-950) 0%, var(--color-surface-900) 50%, var(--color-surface-850) 100%);
-  color: var(--color-surface-100);
+  background: linear-gradient(135deg, #0a0e1a 0%, #0f1629 50%, #111827 100%);
+  color: #e2e8f0;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -22,18 +22,18 @@ body {
 
 /* ─── Scrollbar ─── */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-surface-900);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-surface-700);
-  border-radius: 3px;
+  background: rgba(99, 102, 241, 0.2);
+  border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-500);
+  background: rgba(99, 102, 241, 0.45);
 }
 
 /* ─── Glass Card ─── */
@@ -61,6 +61,35 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
+/* ─── Side Panel Section Cards ─── */
+.panel-section {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(10, 15, 30, 0.5) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  border-radius: 14px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.panel-section:hover {
+  border-color: rgba(99, 102, 241, 0.2);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.06);
+}
+
+/* ─── Metric Tile ─── */
+.metric-tile {
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  backdrop-filter: blur(6px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.metric-tile:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
 /* ─── Glow Pulse (for circuit nodes) ─── */
 @keyframes glow-pulse {
   0%, 100% { filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.4)); }
@@ -72,11 +101,11 @@ body {
 
 /* ─── Fade In ─── */
 @keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-in-up {
-  animation: fade-in-up 0.5s ease-out forwards;
+  animation: fade-in-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 /* ─── Shimmer ─── */
@@ -89,3 +118,11 @@ body {
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
 }
+
+/* ─── Subtle entrance stagger ─── */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }

@@ -91,39 +91,39 @@ function App() {
     <div className="h-screen w-screen overflow-hidden flex flex-col bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black text-slate-100 font-sans selection:bg-indigo-500/30">
       
       {/* ─── Premium Header ─── */}
-      <header className="h-[70px] flex-shrink-0 z-50 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800 flex items-center justify-between px-8 shadow-2xl">
-        <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-cyan-400 flex flex-col items-center justify-center shadow-[0_0_20px_rgba(99,102,241,0.4)]">
-             <span className="text-xl font-bold text-white drop-shadow-md">⚡</span>
+      <header className="h-[64px] flex-shrink-0 z-50 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/60 flex items-center justify-between px-6 lg:px-10 shadow-2xl">
+        <div className="flex items-center gap-3.5">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-cyan-400 flex flex-col items-center justify-center shadow-[0_0_20px_rgba(99,102,241,0.4)]">
+             <span className="text-lg font-bold text-white drop-shadow-md">⚡</span>
           </div>
           <div className="flex flex-col">
-            <h1 className="text-lg font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-slate-400 leading-tight">Virtual Semiconductor Lab</h1>
-            <span className="text-xs text-slate-500 font-bold tracking-widest uppercase">
+            <h1 className="text-base font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-slate-400 leading-tight">Virtual Semiconductor Lab</h1>
+            <span className="text-[10px] text-slate-500 font-bold tracking-widest uppercase">
               Photoresistor vs Photodiode Analysis
             </span>
           </div>
         </div>
         
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-3 bg-slate-900/50 px-4 py-2 rounded-xl border border-slate-800">
-            <span className="text-xs font-bold tracking-widest text-slate-500 uppercase">Input Intensity:</span>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2.5 bg-slate-900/60 px-4 py-1.5 rounded-xl border border-slate-800/60">
+            <span className="text-[10px] font-bold tracking-widest text-slate-500 uppercase">Light Intensity</span>
             <span className="text-sm font-mono font-bold text-amber-400 drop-shadow-[0_0_10px_rgba(251,191,36,0.6)]">
-              {intensity} %
+              {intensity}%
             </span>
           </div>
           <span
-            className={`flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-xl uppercase tracking-widest transition-all duration-300 ${
+            className={`flex items-center gap-2 text-[10px] font-bold px-3.5 py-1.5 rounded-xl uppercase tracking-widest transition-all duration-300 ${
               isRunning
                 ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.2)]"
-                : "bg-slate-900 text-slate-500 border border-slate-800"
+                : "bg-slate-900/60 text-slate-500 border border-slate-800/60"
             }`}
           >
             <span
-              className={`w-2 h-2 rounded-full ${
+              className={`w-1.5 h-1.5 rounded-full ${
                 isRunning ? "bg-emerald-400 animate-pulse shadow-[0_0_10px_rgba(16,185,129,1)]" : "bg-slate-700"
               }`}
             />
-            {isRunning ? "Simulating Target" : "Hardware Idle"}
+            {isRunning ? "Simulating" : "Hardware Idle"}
           </span>
         </div>
       </header>
@@ -132,7 +132,7 @@ function App() {
       <main className="flex-1 flex overflow-hidden">
         
         {/* PRIMARY: 3D Visualization Canvas */}
-        <section className="flex-1 relative bg-black flex flex-col shadow-[inset_-20px_0_50px_rgba(0,0,0,0.5)]">
+        <section className="flex-1 relative bg-black flex flex-col">
           
           <div className="absolute inset-0">
              <Circuit3D
@@ -143,8 +143,8 @@ function App() {
              />
           </div>
 
-          {/* Floating Controls Overlay properly centered inside Canvas */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-[85%] max-w-[800px] z-20 pointer-events-auto">
+          {/* Floating Controls Overlay */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[88%] max-w-[780px] z-20 pointer-events-auto">
             <ControlsPanel
               lux={intensity}
               isRunning={isRunning}
@@ -155,7 +155,7 @@ function App() {
         </section>
 
         {/* SECONDARY: Data & Analysis Side Panel */}
-        <aside className="w-[450px] bg-slate-950/95 backdrop-blur-3xl border-l border-slate-800 flex flex-col p-5 gap-5 overflow-y-auto shadow-2xl relative z-30">
+        <aside className="w-[480px] bg-slate-950/90 backdrop-blur-3xl border-l border-slate-800/50 flex flex-col p-6 gap-6 overflow-y-auto relative z-30">
           <AnalysisPanel
             data={dataHistory}
             lux={intensity}
@@ -177,7 +177,7 @@ function App() {
       </main>
 
       {/* ─── Bottom Support Block: Data Table ─── */}
-      <footer className="h-[200px] flex-shrink-0 bg-slate-950/95 backdrop-blur-3xl border-t border-slate-800 p-4 shadow-[0_-10px_30px_rgba(0,0,0,0.3)] z-40 relative">
+      <footer className="h-[220px] flex-shrink-0 bg-slate-950/90 backdrop-blur-3xl border-t border-slate-800/50 px-6 py-5 shadow-[0_-10px_30px_rgba(0,0,0,0.3)] z-40 relative">
         <DataTable data={dataHistory} />
       </footer>
 

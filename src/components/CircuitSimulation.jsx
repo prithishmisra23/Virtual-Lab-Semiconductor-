@@ -100,13 +100,13 @@ export default function CircuitSimulation({
               ☀ {lux} lux
             </text>
 
-            {/* ── Vcc rail ── */}
+            {/* ── Supply Voltage rail ── */}
             <line x1="40" y1="55" x2="160" y2="55" stroke="rgba(129,140,248,0.5)" strokeWidth="1.5" filter={isRunning ? "url(#wire-glow)" : undefined} />
             <text x="30" y="58" textAnchor="end" style={{ fontSize: "8px", fontFamily: "Inter", fontWeight: 700 }} className="fill-primary-400">
               +{voltage.toFixed(1)}V
             </text>
 
-            {/* ── R_fixed (top resistor) ── */}
+            {/* ── Fixed Resistor (top resistor) ── */}
             <line x1="100" y1="55" x2="100" y2="75" stroke="rgba(129,140,248,0.4)" strokeWidth="1.5" />
             {/* Resistor zigzag */}
             <polyline
@@ -162,13 +162,13 @@ export default function CircuitSimulation({
               {formattedLDR_R}
             </text>
 
-            {/* ── GND rail ── */}
+            {/* ── Ground rail ── */}
             <line x1="100" y1="173" x2="100" y2="195" stroke="rgba(129,140,248,0.4)" strokeWidth="1.5" />
             <line x1="85" y1="195" x2="115" y2="195" stroke="rgba(148,163,184,0.5)" strokeWidth="2" />
             <line x1="90" y1="199" x2="110" y2="199" stroke="rgba(148,163,184,0.35)" strokeWidth="1.5" />
             <line x1="95" y1="203" x2="105" y2="203" stroke="rgba(148,163,184,0.2)" strokeWidth="1" />
             <text x="100" y="215" textAnchor="middle" style={{ fontSize: "8px", fontFamily: "Inter", fontWeight: 600 }} className="fill-surface-200/40">
-              GND
+              Ground
             </text>
 
             {/* ── Animated current dots ── */}
@@ -216,13 +216,13 @@ export default function CircuitSimulation({
               ☀ {lux} lux
             </text>
 
-            {/* ── Vcc rail (reverse bias) ── */}
+            {/* ── Supply Voltage rail (reverse bias) ── */}
             <line x1="40" y1="55" x2="160" y2="55" stroke="rgba(129,140,248,0.5)" strokeWidth="1.5" filter={isRunning ? "url(#wire-glow)" : undefined} />
             <text x="30" y="58" textAnchor="end" style={{ fontSize: "8px", fontFamily: "Inter", fontWeight: 700 }} className="fill-primary-400">
               +V
             </text>
 
-            {/* ── R_load (top resistor) ── */}
+            {/* ── Load Resistor (top resistor) ── */}
             <line x1="100" y1="55" x2="100" y2="72" stroke="rgba(129,140,248,0.4)" strokeWidth="1.5" />
             <polyline
               points="100,72 106,77 94,85 106,93 94,101 106,109 100,114"
@@ -278,13 +278,13 @@ export default function CircuitSimulation({
               I = {(photodiodeCurrent * 1000).toFixed(3)} mA
             </text>
 
-            {/* ── GND rail ── */}
+            {/* ── Ground rail ── */}
             <line x1="100" y1="155" x2="100" y2="195" stroke="rgba(129,140,248,0.4)" strokeWidth="1.5" />
             <line x1="85" y1="195" x2="115" y2="195" stroke="rgba(148,163,184,0.5)" strokeWidth="2" />
             <line x1="90" y1="199" x2="110" y2="199" stroke="rgba(148,163,184,0.35)" strokeWidth="1.5" />
             <line x1="95" y1="203" x2="105" y2="203" stroke="rgba(148,163,184,0.2)" strokeWidth="1" />
             <text x="100" y="215" textAnchor="middle" style={{ fontSize: "8px", fontFamily: "Inter", fontWeight: 600 }} className="fill-surface-200/40">
-              GND
+              Ground
             </text>
 
             {/* ── Animated current dots ── */}

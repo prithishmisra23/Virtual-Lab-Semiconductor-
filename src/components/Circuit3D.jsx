@@ -169,8 +169,8 @@ function LDRCircuit({ lux, voltage, isRunning, position }) {
           <cylinderGeometry args={[0.1, 0.1, 0.1, 16]} />
           <primitive object={MAT_NODE} attach="material" />
         </mesh>
-        <Tooltip show={hoveredNode === 'battery'} title="Vcc (Supply)" desc="Provides steady voltage to the circuit." />
-        <Html position={[-0.8, 0, 0]} center><div className="text-[10px] text-slate-400 font-mono font-bold bg-black/60 px-1.5 py-0.5 rounded border border-slate-800">Vcc: 5.0V</div></Html>
+        <Tooltip show={hoveredNode === 'battery'} title="Supply Voltage" desc="Provides steady voltage to the circuit." />
+        <Html position={[-0.8, 0, 0]} center><div className="text-[10px] text-slate-400 font-mono font-bold bg-black/60 px-1.5 py-0.5 rounded border border-slate-800">Supply: 5.0V</div></Html>
       </group>
 
       {/* Resistor */}
@@ -184,8 +184,8 @@ function LDRCircuit({ lux, voltage, isRunning, position }) {
         <mesh position={[0, 0, 0]}><cylinderGeometry args={[0.11, 0.11, 0.05, 16]} /><meshBasicMaterial color="#000000" /></mesh>
         <mesh position={[0, -0.2, 0]}><cylinderGeometry args={[0.11, 0.11, 0.05, 16]} /><meshBasicMaterial color="#f59e0b" /></mesh>
         
-        <Tooltip show={hoveredNode === 'resistor'} title="Fixed Resistor" desc="Used in a voltage divider to create measurable Vout." />
-        <Html position={[-0.8, 0, 0]} center><div className="text-[10px] text-slate-400 font-mono font-bold bg-black/60 px-1.5 py-0.5 rounded border border-slate-800">R_fix: 10kΩ</div></Html>
+        <Tooltip show={hoveredNode === 'resistor'} title="Fixed Resistor" desc="Used in a voltage divider to create measurable output voltage." />
+        <Html position={[-0.8, 0, 0]} center><div className="text-[10px] text-slate-400 font-mono font-bold bg-black/60 px-1.5 py-0.5 rounded border border-slate-800">Fixed Resistor: 10kΩ</div></Html>
       </group>
 
       {/* Vout Node */}
@@ -194,10 +194,10 @@ function LDRCircuit({ lux, voltage, isRunning, position }) {
           <sphereGeometry args={[0.15]} />
           <meshStandardMaterial ref={voutMatRef} color="#38bdf8" metalness={0.6} roughness={0.2} emissive="#0284c7" />
         </mesh>
-        <Tooltip show={hoveredNode === 'node'} title="Vout Node" desc="Voltage drops here based on LDR resistance." />
+        <Tooltip show={hoveredNode === 'node'} title="Output Voltage Node" desc="Voltage drops here based on LDR resistance." />
         <Html position={[0.8, 0, 0]} center>
           <div className="bg-slate-950/90 border border-cyan-500/40 text-cyan-400 text-[11px] font-bold px-3 py-1.5 rounded shadow-[0_0_12px_rgba(34,211,238,0.2)] whitespace-nowrap backdrop-blur-md">
-            Vout: {voltage.toFixed(2)}V
+            Output: {voltage.toFixed(2)}V
           </div>
         </Html>
       </group>
@@ -212,7 +212,7 @@ function LDRCircuit({ lux, voltage, isRunning, position }) {
           <cylinderGeometry args={[0.25, 0.25, 0.05, 32]} />
           <meshStandardMaterial ref={emissiveRef} color="#fbbf24" emissive="#fbbf24" emissiveIntensity={0} />
         </mesh>
-        <Tooltip show={hoveredNode === 'ldr'} title="Photoresistor Sensor" desc="Light Dependent Resistor. Nonlinear resistance drops as light hits it." />
+        <Tooltip show={hoveredNode === 'ldr'} title="Photoresistor Sensor" desc="Light Dependent Resistor. Nonlinear resistance drops as light increases." />
         <Html position={[-0.8, 0, 0]} center><div className="text-[10px] text-amber-400 font-mono font-bold bg-black/60 px-1.5 py-0.5 border border-slate-800 rounded">Photoresistor</div></Html>
       </group>
 
@@ -222,8 +222,8 @@ function LDRCircuit({ lux, voltage, isRunning, position }) {
           <boxGeometry args={[0.8, 0.1, 0.8]} />
           <primitive object={MAT_GND} attach="material" />
         </mesh>
-        <Tooltip show={hoveredNode === 'gnd'} title="Ground (GND)" desc="0V reference point." />
-        <Html position={[0, -0.3, 0]} center><div className="text-[9px] text-surface-200/40 font-bold tracking-widest bg-black/40 px-1 rounded uppercase">Gnd</div></Html>
+        <Tooltip show={hoveredNode === 'gnd'} title="Ground" desc="0V reference point." />
+        <Html position={[0, -0.3, 0]} center><div className="text-[9px] text-surface-200/40 font-bold tracking-widest bg-black/40 px-1 rounded uppercase">Ground</div></Html>
       </group>
     </group>
   );
@@ -280,7 +280,7 @@ function PhotodiodeCircuit({ lux, voltage, isRunning, position }) {
       <group position={[0, 3, 0]}>
         <mesh castShadow receiveShadow><cylinderGeometry args={[0.25, 0.25, 0.6, 32]} /><primitive object={MAT_BATTERY} attach="material" /></mesh>
         <mesh position={[0, 0.35, 0]} castShadow><cylinderGeometry args={[0.1, 0.1, 0.1, 16]} /><primitive object={MAT_NODE} attach="material" /></mesh>
-        <Html position={[0.8, 0, 0]} center><div className="text-[10px] text-slate-400 font-mono font-bold bg-black/60 px-1.5 py-0.5 border border-slate-800 rounded">Vcc: 5.0V</div></Html>
+        <Html position={[0.8, 0, 0]} center><div className="text-[10px] text-slate-400 font-mono font-bold bg-black/60 px-1.5 py-0.5 border border-slate-800 rounded">Supply: 5.0V</div></Html>
       </group>
 
       {/* Resistor */}
@@ -290,7 +290,7 @@ function PhotodiodeCircuit({ lux, voltage, isRunning, position }) {
         <mesh position={[0, 0.2, 0]}><cylinderGeometry args={[0.11, 0.11, 0.05, 16]} /><meshBasicMaterial color="#ef4444" /></mesh>
         <mesh position={[0, 0, 0]}><cylinderGeometry args={[0.11, 0.11, 0.05, 16]} /><meshBasicMaterial color="#000000" /></mesh>
         <mesh position={[0, -0.2, 0]}><cylinderGeometry args={[0.11, 0.11, 0.05, 16]} /><meshBasicMaterial color="#f59e0b" /></mesh>
-        <Html position={[0.8, 0, 0]} center><div className="text-[10px] text-slate-400 font-mono font-bold bg-black/60 px-1.5 py-0.5 border border-slate-800 rounded">R_load: 10kΩ</div></Html>
+        <Html position={[0.8, 0, 0]} center><div className="text-[10px] text-slate-400 font-mono font-bold bg-black/60 px-1.5 py-0.5 border border-slate-800 rounded">Load Resistor: 10kΩ</div></Html>
       </group>
 
       {/* Vout Node */}
@@ -301,7 +301,7 @@ function PhotodiodeCircuit({ lux, voltage, isRunning, position }) {
         </mesh>
         <Html position={[-0.8, 0, 0]} center>
           <div className="bg-slate-950/90 border border-amber-500/40 text-amber-400 text-[11px] font-bold px-3 py-1.5 rounded shadow-[0_0_12px_rgba(251,191,36,0.2)] whitespace-nowrap backdrop-blur-md">
-            Vout: {voltage.toFixed(2)}V
+            Output: {voltage.toFixed(2)}V
           </div>
         </Html>
       </group>
@@ -322,13 +322,13 @@ function PhotodiodeCircuit({ lux, voltage, isRunning, position }) {
           <primitive object={MAT_NODE} attach="material" />
         </mesh>
         <Tooltip show={hoveredNode === 'pd'} title="Photodiode" desc="Reverse-biased PN Junction. Instant, linear photocurrent generation." />
-        <Html position={[0.8, 0, 0]} center><div className="text-[10px] text-cyan-400 font-mono font-bold bg-black/60 px-1.5 py-0.5 border border-slate-800 rounded">PD (Rev Bias)</div></Html>
+        <Html position={[0.8, 0, 0]} center><div className="text-[10px] text-cyan-400 font-mono font-bold bg-black/60 px-1.5 py-0.5 border border-slate-800 rounded">Photodiode (Reverse Bias)</div></Html>
       </group>
 
       {/* Ground Plate */}
       <group position={[0, -3.5, 0]}>
         <mesh castShadow receiveShadow><boxGeometry args={[0.8, 0.1, 0.8]} /><primitive object={MAT_GND} attach="material" /></mesh>
-        <Html position={[0, -0.3, 0]} center><div className="text-[9px] text-surface-200/40 font-bold tracking-widest bg-black/40 px-1 rounded uppercase">Gnd</div></Html>
+        <Html position={[0, -0.3, 0]} center><div className="text-[9px] text-surface-200/40 font-bold tracking-widest bg-black/40 px-1 rounded uppercase">Ground</div></Html>
       </group>
     </group>
   );
